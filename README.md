@@ -21,7 +21,7 @@ This project provides a secure and reliable proxy for the Telegram Bot API that 
 Replace the standard Telegram API URL (`https://api.telegram.org/bot`) with:
 
 ```
-https://telegram-api-proxy-anonymous.pages.dev/api/bot
+https://telegram-api-proxy-ced.pages.dev/api/bot
 ```
 
 ### Example in JavaScript
