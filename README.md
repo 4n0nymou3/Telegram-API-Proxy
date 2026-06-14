@@ -155,3 +155,9 @@ Open `worker.js` and edit these constants near the top of the file:
 ## License
 
 [GPL-3.0](LICENSE)
+
+---
+
+## Engineered by:
+
+Anonymous
