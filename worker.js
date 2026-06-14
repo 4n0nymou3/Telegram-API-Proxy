@@ -37,7 +37,7 @@ const SUSPICIOUS_THRESHOLD = 10;
 
 const ALLOWED_METHODS   = ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'];
 const MAX_BODY_SIZE     = 50 * 1024 * 1024;
-const ALLOWED_COUNTRIES = [];
+const ALLOWED_COUNTRIES = []; //const ALLOWED_COUNTRIES = ['IR'];
 const BLOCKED_COUNTRIES = [];
 
 const ALLOWED_USER_AGENTS = /telegram|bot|curl|postman|httpie|axios|fetch|requests|python|java|go-http|node/i;
