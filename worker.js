@@ -41,7 +41,6 @@ const MAX_BODY_SIZE     = 50 * 1024 * 1024;
 const ALLOWED_COUNTRIES = []; //const ALLOWED_COUNTRIES = ['IR'];
 const BLOCKED_COUNTRIES = [];
 
-const ALLOWED_USER_AGENTS = /telegram|bot|curl|postman|httpie|axios|fetch|requests|python|java|go-http|node/i;
 const BLOCKED_USER_AGENTS = /scanner|crawler|spider|bot.*attack|sqlmap|nikto|nmap/i;
 
 const TELEGRAM_API_HOST = 'api.telegram.org';
@@ -576,10 +575,6 @@ async function performSecurityChecks(request) {
         await recordSuspiciousActivity(clientIP, 'blocked_user_agent');
         return { blocked: true, reason: 'Blocked user agent', status: 403 };
     }
-    if (!ALLOWED_USER_AGENTS.test(userAgent) && userAgent.length < 10) {
-        await recordSuspiciousActivity(clientIP, 'suspicious_user_agent');
-        return { blocked: true, reason: 'Invalid user agent', status: 403 };
-    }
 
     const suspicious = suspiciousIPs.get(clientIP);
     if (suspicious && suspicious.count >= SUSPICIOUS_THRESHOLD) {
@@ -625,7 +620,7 @@ function decodePathSegment(value) {
     try {
         let decoded = decodeURIComponent(value);
         if (/%[0-9A-Fa-f]{2}/.test(decoded)) {
-            try { decoded = decodeURIComponent(decoded); } catch { /* keep single decode */ }
+            try { decoded = decodeURIComponent(decoded); } catch { }
         }
         return decoded;
     } catch {
